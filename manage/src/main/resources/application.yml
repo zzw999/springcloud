@@ -1,0 +1,27 @@
+server:
+  port: 8183
+spring:
+  application:
+    name: manage
+  cloud:
+    config:
+      label: master
+      profile: dev
+      uri: http://localhost:8888/
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+      database: mysql
+      hibernate:
+        ddl-auto: update
+        naming:
+          strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      properties:
+          hibernate:
+            dialect: org.hibernate.dialect.MySQL5Dialect
+            connection:
+              autocommit: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8181/eureka/

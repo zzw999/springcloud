@@ -1,0 +1,23 @@
+server:
+  port: 8182
+spring:
+  application:
+    name: feign
+  cloud:
+    config:
+      label: master
+      profile: dev
+      uri: http://localhost:8888/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8181/eureka/
+feign:
+  hystrix:
+    enabled: true
+
+
+
+#      spring.cloud.config.label=master
+#      spring.cloud.config.profile=dev
+#      spring.cloud.config.uri= http://localhost:8888/
