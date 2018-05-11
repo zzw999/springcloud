@@ -7,6 +7,7 @@ import com.zzw.interfaces.util.BeanCopyUtil;
 import com.zzw.manage.entity.User;
 import com.zzw.manage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +25,9 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    @Value("${server.port}")
+    private String port;
+
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public Response<UserDto> fetchById(@PathVariable Long id) {
         User result = service.findById(id);
@@ -33,6 +37,7 @@ public class UserController {
 
     @RequestMapping(value = "/name/{name}",method = RequestMethod.GET)
     public Response<UserDto> fetchByName(@PathVariable String name) {
+        System.out.println("port:"+port);
         User result = service.findByName(name);
         UserDto response = BeanCopyUtil.INSTANCE.getInstance().map(result, UserDto.class);
         return new Response<>(response);

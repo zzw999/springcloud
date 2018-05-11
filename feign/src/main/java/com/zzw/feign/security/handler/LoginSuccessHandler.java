@@ -1,5 +1,6 @@
 package com.zzw.feign.security.handler;
 
+import com.zzw.interfaces.pojo.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
@@ -16,13 +17,19 @@ import java.io.IOException;
  * @desc
  */
 @Component
-public class LoginSuccessHandler implements AuthenticationSuccessHandler {
+public class LoginSuccessHandler extends ResponseHandler implements AuthenticationSuccessHandler {
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
 
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-        logger.info("登陆验证成功:成功原因：{}",authentication.getCredentials());
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+        logger.info("登陆验证成功");
+        //此处判断是app 还是 pc端web页面  选择是跳转页面还是返回json
+        response.setStatus(HttpServletResponse.SC_OK);
+        Response<Object> result = new Response<>();
+        result.setMessage("登陆成功");
+        result.setCode("200");
+        response(result,request,response,"/index");
     }
 }

@@ -5,9 +5,9 @@
     <file url="file://$PROJECT_DIR$/config" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/feign" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/feign" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/interfaces" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/manage" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/zuul" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
